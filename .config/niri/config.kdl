@@ -61,9 +61,9 @@ layout {
 
 
     focus-ring {
-        width 2
-        active-color "#cba6f7"
-        inactive-color "#45575a"
+        width 1
+        active-color "#5e81ac"
+        inactive-color "#2e3440"
     }
 
     border {
@@ -72,9 +72,9 @@ layout {
 
     shadow {
         on
-	softness 20
-	spread 7
-	offset x=-1 y=-5
+	    softness 20
+	    spread 7
+	    offset x=-1 y=-5
         color "#0009"
     }
 
