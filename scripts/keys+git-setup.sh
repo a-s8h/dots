@@ -12,3 +12,4 @@ cat ~/.ssh/id_ed25519.pub
 
 git config --global user.email "$EMAIL"
 git config --global user.name "$FNAME"
+git config --global core.editor nvim

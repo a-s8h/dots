@@ -17,6 +17,8 @@ fi
 read -p "install Rustup and rust(y/n)?" CONT
 if [ "$CONT" = "y" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+  chmod +x ~/.local/bin/rust-analyzer
 else
   echo "Rust: skip";
 fi
@@ -26,7 +28,8 @@ if [ "$CONT" = "y" ]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
   \. "$HOME/.nvm/nvm.sh"
   read -p "Node major version?" NV
-  nvm install $NV 
+  nvm install $NV
+  npm install -g typescript-language-server typescript
 else
   echo "Node: skip";
 fi
