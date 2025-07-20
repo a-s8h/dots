@@ -288,7 +288,7 @@ binds {
     Mod+Return { spawn "ghostty"; }
 
     Mod+Space { spawn "fuzzel";  }
-    Super+Ctrl+L { spawn "swaylock"; }
+    Super+Ctrl+L { spawn "swaylock" "-i" "~/Pictures/Колодец.jpg"; }
     Mod+B { spawn "zen"; }
     Mod+E { spawn "nautilus"; }
     Mod+O { spawn "obsidian"; }
