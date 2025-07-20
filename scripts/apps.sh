@@ -83,6 +83,8 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install swaybg
   sudo dnf install swaylock
   sudo dnf install wl-clipboard
+  sudo dnf install dbus-devel
+  cargo install bluetui
 else
   echo "Skip WM and related tools"
 end
