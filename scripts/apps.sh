@@ -87,11 +87,3 @@ else
   echo "Skip WM and related tools"
 end
 
-# VPN
-read -p "Install Amnezia VPN client (y/n)?" CONT
-if [ "$CONT" = "y" ]; then
-  curl -o vpn_client.tar.zip https://github.com/amnezia-vpn/amnezia-client/releases/download/4.8.8.3/AmneziaVPN_4.8.8.3_linux_x64.tar.zip
-else
-  echo "Amnezia VPN: skip"
-fi
-
