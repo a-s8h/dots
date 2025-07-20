@@ -1,4 +1,4 @@
 window-decoration = false
 font-size = 10
-theme = GruvboxDark 
+theme = nord 
 confirm-close-surface = false
