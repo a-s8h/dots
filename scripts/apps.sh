@@ -52,7 +52,9 @@ fi
 # communication
 read -p "Install flatpacked Slack (y/n)?" CONT
 if [ "$CONT" = "y" ]; then
-  flatpak install flathub com.slack.Slack
+  curl -L -o ./slack.rpm "https://downloads.slack-edge.com/desktop-releases/linux/x64/4.43.51/slack-4.43.51-0.1.el8.x86_64.rpm"
+  sudo dnf install -y ./slack.rpm
+  rm -rf slack.rpm
 else
   echo "Slack: skip"
 fi
@@ -88,7 +90,17 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install wl-clipboard
   sudo dnf install dbus-devel
   cargo install bluetui
+  sudo dnf install nmtui
 else
   echo "Skip WM and related tools"
+end
+
+
+# gaming
+read -p "Install Steam (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    sudo dnf install steam
+else
+    echo "Steam: skip"
 end
 
