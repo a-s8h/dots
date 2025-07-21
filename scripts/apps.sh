@@ -85,6 +85,7 @@ if [ "$CONT" = "y" ]; then
   echo "priority=1" | sudo tee -a /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:yalter:niri-git.repo
   sudo dnf install niri
   sudo dnf install waybar
+  sudo dnf install fuzzel
   sudo dnf install swaybg
   sudo dnf install swaylock
   sudo dnf install wl-clipboard
