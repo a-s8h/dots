@@ -2,3 +2,4 @@ window-decoration = false
 font-size = 10
 theme = nord 
 confirm-close-surface = false
+font-family = 0xProto Nerd Font

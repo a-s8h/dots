@@ -396,3 +396,13 @@ hotkey-overlay {
 }
 
 spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/Колодец.jpg" "-m" "fill"
+
+//xwayland-satellite {
+//    path "xwayland-satellite"
+//}
+
+spawn-at-startup "xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}

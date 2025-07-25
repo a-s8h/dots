@@ -49,6 +49,13 @@ else
   echo "NVIM: skip"
 fi
 
+read -p "Install Zed (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    curl -f https://zed.dev/install.sh | ZED_CHANNEL=preview sh
+else
+    echo "Zed: skip"
+fi
+
 # communication
 read -p "Install flatpacked Slack (y/n)?" CONT
 if [ "$CONT" = "y" ]; then
@@ -92,6 +99,7 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install dbus-devel
   cargo install bluetui
   sudo dnf install nmtui
+  sudo dnf install xwayland-satellite
 else
   echo "Skip WM and related tools"
 end
