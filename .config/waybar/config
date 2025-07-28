@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 28,
+    "height": 20,
     "reload_style_on_change": true,
     "modules-left": [
         "niri/workspaces",
@@ -18,7 +18,6 @@
         "tray",
 	    "bluetooth",
 	    "network",
-	    "custom/swap",
 	    "custom/audio_idle_inhibitor",
         "pulseaudio",
 	    "custom/notifications",
@@ -30,7 +29,7 @@
             "spotify": "",
             "default": "🎵"
         },
-        "exec": "~/.config/waybar/playerinfo.sh",
+        "exec": "~/.config/waybar/scripts/playerinfo.sh",
         "escape": true,
         "return-type": "json",
         "tooltip": true,
@@ -47,11 +46,6 @@
     "niri/workspaces": {
         "all-outputs": true,
 	    "format" : "●",
-    },
-    "custom/swap": {
-    	"on-click": "darkman toggle",
-    	"tooltip": "Swap dark/light mode",
-    	"format": " "
     },
     "pulseaudio": {
         "format": "{icon}",
@@ -126,8 +120,8 @@
 	    "format": "",
 	    "format-disabled": "󰂲",
 	    "format-off": "󰂲",
-	    "format-connected": "󰂰 {device_alias}",
-	    "format-connected-battery": "󰂰 {device_alias} {device_battery_percentage}%",
+	    "format-connected": "󰂰",
+	    "format-connected-battery": "󰂰",
 	    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
 	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
