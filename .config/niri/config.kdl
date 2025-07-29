@@ -161,7 +161,7 @@ window-rule {
 
 window-rule {
   match app-id="Slack$"
-  open-on-workspace "4"
+  open-on-workspace "3"
   open-maximized true
 }
 
@@ -178,6 +178,11 @@ window-rule {
 }
 
 window-rule {
+  match app-id="dev.zed.Zed-Preview$"
+  open-on-workspace "2"
+}
+
+window-rule {
   match app-id="Bruno$"
   open-on-workspace "2"
 }
@@ -185,25 +190,25 @@ window-rule {
 window-rule{
     match app-id="^obsidian$"
     open-maximized true
-    open-on-workspace "7"
+    open-on-workspace "4"
 }
 
 window-rule {
   match app-id="com.github.th_ch.youtube_music$"
   match app-id="Spotify"
   open-maximized true
-  open-on-workspace "8"
+  open-on-workspace "5"
 }
 
 window-rule {
   match app-id=r#"org.telegram.desktop.*"#
   open-maximized true
-  open-on-workspace "9"
+  open-on-workspace "1"
 }
 
 window-rule {
   match app-id="AmneziaVPN$"
-  open-on-workspace "9"
+  open-on-workspace "1"
 }
 
 
@@ -345,6 +350,7 @@ spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/bird.png" "-m
 
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
+spawn-at-startup "swaync"
 
 environment {
     DISPLAY ":0"

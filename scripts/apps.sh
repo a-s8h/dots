@@ -97,9 +97,7 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install swaylock
   sudo dnf install wl-clipboard
   sudo dnf install playerctl
-  sudo dnf install dbus-devel
-  cargo install bluetui
-  sudo dnf install nmtui
+  sudo dnf install SwayNotificationCenter
   sudo dnf install xwayland-satellite
 
   git clone https://github.com/e-tho/bzmenu
