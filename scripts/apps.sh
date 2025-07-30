@@ -84,6 +84,7 @@ fi
 
 sudo dnf install ripgrep
 sudo dnf install fzf
+sudo dnf install btop
 
 # desktop management
 read -p "Install niri wm and desktop command line tools? (y/n)?" CONT
