@@ -235,7 +235,7 @@ binds {
     Mod+Return { spawn "ghostty"; }
 
     Mod+Space { spawn "fuzzel";  }
-    Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/bird.png"; }
+    Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/blockwavedawn.png"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus"; }
     Mod+O { spawn "obsidian"; }
@@ -342,7 +342,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/bird.png" "-m" "fill"
+spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/blockwavedawn.png" "-m" "fill"
 
 //xwayland-satellite {
 //    path "xwayland-satellite"
