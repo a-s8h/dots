@@ -351,6 +351,7 @@ spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/blockwavedawn
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock"
 
 environment {
     DISPLAY ":0"

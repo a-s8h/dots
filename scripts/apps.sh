@@ -96,6 +96,7 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install fuzzel
   sudo dnf install swaybg
   sudo dnf install swaylock
+  sudo dnf install swayidle
   sudo dnf install wl-clipboard
   sudo dnf install playerctl
   sudo dnf install SwayNotificationCenter
