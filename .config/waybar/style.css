@@ -1,109 +1,67 @@
-@import url("./rose-pine-dawn.css");
+/* Kanagawa-inspired Waybar Theme */
 
 * {
-    transition: 150ms;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "CaskaydiaMono Nerd Font", monospace;
+  font-size: 12px;
+  font-weight: 400;
 }
 
-#waybar {
-    background: @base;
-    color: @text;
+window#waybar {
+  background: #1f1f28;
+  color: #dcd7ba;
 }
 
-.modules-right.horizontal {
-    margin-right: 4px;
-}
-
-#tray > widget {
-    border-radius: 1rem;
-}
-
-#tray > widget > image {
-    padding: 0 0.5rem;
-}
-
-label.module {
-    font-family: JetbrainsMono Nerd Font;
-    font-size: 13px;
-    padding: 0 10px;
-    margin: 2px 0;
-    border-radius: 1rem;
-}
-#clock {
-    color: @text;
-}
-#bluetooth,
-#network,
-#pulseaudio {
-    padding: 0 1rem 0 0.7rem;
-    font-size: 16px;
-}
-
-label.module:hover,
-#tray > widget:hover {
-    background: @highlightMed;
-}
-
-#tags,
+/* Workspaces */
 #workspaces {
-    margin: 2px;
-    padding: 0 4px;
-    border-radius: 1rem;
-    background: none;
+  margin: 0;
 }
 
-#tags button,
 #workspaces button {
-    font-size: 0;
-    min-width: 4px;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    margin: 9px 4px;
-    border-radius: 1rem;
+  all: initial;
+  padding: 2px 6px;
+  margin-right: 3px;
+  color: #727169;
 }
 
-#tags button,
-#workspaces button.empty {
-    background: @subtle;
-    color: @highlightLow;
+#workspaces button:hover {
+  background: #2a2a37;
 }
 
-#tags button,
-#workspace button.active {
-    color: @iris;
-}
-
-#tags button.focused,
-#tags button.occupied,
-#workspaces button,
 #workspaces button.active {
-    background: @rose;
+  background: #54546d;
 }
 
-#tags button.focused,
-#workspaces button.active {
-    min-width: 1.75rem;
-    margin: 8px 0.3rem;
+#clock {
+  padding: 4px 12px;
 }
 
-#tags button.urgent,
-#workspaces button.urgent {
-    background: @love;
+/* Module styling */
+#network,
+#bluetooth,
+#pulseaudio {
+    padding: 4px 12px;
 }
 
-#battery.charging {
-    color: @pine;
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-power-menu:hover {
+  background: #2a2a37;
+  color: #dcd7ba;
 }
 
-#battery.critical:not(.charging) {
-    color: @love;
+/* Tooltips */
+tooltip {
+  background: #2a2a37;
+  color: #dcd7ba;
+  padding: 4px 8px;
 }
 
-#custom-power {
-    color: @foam;
+tooltip label {
+  color: #dcd7ba;
+  font-weight: 400;
 }
 
-#custom-media,
-#cava {
-    color: @text;
-}

@@ -41,10 +41,9 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.25
+        proportion 0.33333
         proportion 0.5
-        proportion 0.75
-        proportion 1.0
+        proportion 0.66667
     }
 
     preset-window-heights {
@@ -56,7 +55,7 @@ layout {
     }
 
     default-column-width { 
-        proportion 0.5
+        proportion 0.66667
     }
 
 
@@ -235,7 +234,7 @@ binds {
     Mod+Return { spawn "ghostty"; }
 
     Mod+Space { spawn "fuzzel";  }
-    Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/rocks.jpg"; }
+    Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/autumn.jpg"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "nautilus"; }
     Mod+O { spawn "obsidian"; }
@@ -342,7 +341,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/rocks.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/autumn.jpg" "-m" "fill"
 
 //xwayland-satellite {
 //    path "xwayland-satellite"

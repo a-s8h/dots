@@ -1,29 +1,41 @@
+
 {
-    "layer": "top",
-    "position": "top",
-    "height": 20,
-    "reload_style_on_change": true,
-    "modules-left": [
-        "niri/workspaces",
-	    "custom/media#1",
-	    "custom/media#2",
-	    "custom/media#3",
-    ],
-    "modules-center": [
-    	"idle_inhibitor",
-        "clock",
-	    "custom/weather",
-    ],
-    "modules-right": [
-        "tray",
-	    "bluetooth",
-	    "network",
-	    "custom/audio_idle_inhibitor",
-        "pulseaudio",
-	    "custom/notifications",
-	    "custom/power",
-    ],
-    "custom/media#2": {
+    "position": "bottom", 
+    "height": 5,
+    "modules-left": ["niri/workspaces", "custom/media"],
+    "modules-center": ["niri/window", "clock"],
+    "modules-right": ["pulseaudio", "network", "bluetooth", "tray"],
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%I:%M }",
+        "format-alt": "{:%Y-%m-%d}"
+      
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "",
+        "format-disconnected": "Disconnected ",
+        "on-click": "networkmanager_dmenu"
+    },
+     "bluetooth": {
+        "on-click": "bzmenu -l custom --launcher-command \"fuzzel --config=$HOME/.config/fuzzel/fuzzel.ini -d -p '{prompt}'\"",
+	    "format": "",
+	    "format-disabled": "󰂲",
+	    "format-off": "󰂲",
+	    "format-connected": "󰂰",
+	    "format-connected-battery": "󰂰",
+	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
         "format": " {} {icon} ",
         "format-icons": {
             "spotify": "",
@@ -35,112 +47,4 @@
         "tooltip": true,
         "on-click": "playerctl play-pause",
     },
-    "custom/media#1": {
-        "format": "",
-        "on-click": "playerctl previous"
-    },
-    "custom/media#3": {
-      "format": "",
-      "on-click": "playerctl next"
-    },
-    "niri/workspaces": {
-        "all-outputs": true,
-	    "format" : "●",
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "format-muted": "󰝟",
-        //"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-	"on-click": "pavucontrol",
-        "tooltip-format": "{volume}% ({desc})",
-        "scroll-step": 5,
-    },
-    "clock": {
-      "interval": 60,
-      "format": "{:%a %d  %R}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
-      "calendar": {
-          "mode-mon-col": 3,
-          "format": {
-              "months": "<b>{}</b>",
-              "days": "{}",
-              "weeks": "<b>{:%W}</b>",
-              "weekdays": "<b>{}</b>",
-              "today": "<b><u>{}</u></b>",
-          },
-      },
-      "actions": {
-          "on-click": "mode",
-          "on-scroll-up": "shift_up",
-          "on-scroll-down": "shift_down",
-      },
-    },
-    "network": {
-	"family": "ipv4",
-	"format": "⚠",
-	"format-wifi": " ",
-    	"format-ethernet": " ",
-    	"format-disconnected": "⚠",
-    	"on-click": "networkmanager_dmenu",
-    	"tooltip": true,
-    	"tooltip-format": " {essid} "
-    },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 2,
-    },
-    "custom/power": {
-        "format": "⏻",
-        //"on-click": "~/.config/sway/scripts/rofi_",
-        "on-click": "~/.config/niri/scripts/power-menu.sh",
-        "tooltip": false
-    },
-    "custom/notifications": {
-        "format": "{}",
-        "on-click": "swaync-client -t -sw",
-        "exec": "~/.config/waybar/scripts/waybar-notification.sh",
-        "tooltip": false,
-        "interval": 1
-    },
-    "custom/audio_idle_inhibitor": {
-        "format": "{icon}",
-	    "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-	    "exec-if": "which sway-audio-idle-inhibit",
-	    "return-type": "json",
-	    "format-icons": {
-	        "output": "",
-	        "input": "",
-	        "output-input": "  ",
-	        "none": ""
-	     }
-    },
-    "bluetooth": {
-        "on-click": "bzmenu -l custom --launcher-command \"fuzzel --config=$HOME/.config/fuzzel/fuzzel-settings.ini -d -p '{prompt}'\"",
-	    "format": "",
-	    "format-disabled": "󰂲",
-	    "format-off": "󰂲",
-	    "format-connected": "󰂰",
-	    "format-connected-battery": "󰂰",
-	    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰒳 ",
-            "deactivated": "󰒲 "
-        }
-    },
-    "custom/weather": {
-        "format": "{}°",
-        "tooltip": true,
-        "interval": 1800,
-        "exec": "wttrbar --location selestat --date-format %d-%m-%Y --lang fr",
-        "return-type": "json"
-    },
 }
-
