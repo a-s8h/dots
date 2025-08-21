@@ -4,7 +4,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: "CaskaydiaMono Nerd Font", monospace;
+  font-family: "0xProto Nerd Font", monospace;
   font-size: 12px;
   font-weight: 400;
 }
@@ -42,7 +42,7 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio {
-    padding: 4px 12px;
+    padding: 2px 9px;
 }
 
 #network:hover,
@@ -51,6 +51,19 @@ window#waybar {
 #custom-power-menu:hover {
   background: #2a2a37;
   color: #dcd7ba;
+}
+
+#tray {
+    padding: 2px 9px;
+}
+
+#tray * {
+    background: #1f1f28;
+    color: #dcd7ba;
+}
+
+#tray *:hover {
+    background: #2a2a37;
 }
 
 /* Tooltips */

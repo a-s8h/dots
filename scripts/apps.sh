@@ -100,7 +100,7 @@ if [ "$CONT" = "y" ]; then
   sudo dnf install papirus-icon-theme
   sudo dnf install wl-clipboard
   sudo dnf install playerctl
-  sudo dnf install SwayNotificationCenter
+  sudo dnf install dunst
   sudo dnf install xwayland-satellite
 
   git clone https://github.com/e-tho/bzmenu

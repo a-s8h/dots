@@ -61,8 +61,8 @@ layout {
 
     focus-ring {
         width 1
-        active-color "#d7827e"
-        inactive-color "#9893a5"
+        active-color "#c4b28a"
+        inactive-color "#949fb5"
     }
 
     border {
@@ -178,11 +178,6 @@ window-rule {
 
 window-rule {
   match app-id="dev.zed.Zed-Preview$"
-  open-on-workspace "2"
-}
-
-window-rule {
-  match app-id="Bruno$"
   open-on-workspace "2"
 }
 
@@ -319,12 +314,12 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-     Mod+Shift+T { toggle-column-tabbed-display; }
-     Mod+S       { toggle-window-floating; }
+    Mod+Shift+T { toggle-column-tabbed-display; }
+    Mod+S       { toggle-window-floating; }
 
-     Print { screenshot; }
-     Ctrl+Print { screenshot-screen; }
-     Alt+Print { screenshot-window; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -349,8 +344,8 @@ spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/autumn.jpg" "
 
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
-spawn-at-startup "swaync"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock"
+spawn-at-startup "dunst"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -i /home/yog/Pictures/autumn.jpg"
 
 environment {
     DISPLAY ":0"
