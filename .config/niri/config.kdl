@@ -177,17 +177,6 @@ window-rule {
 }
 
 window-rule {
-  match app-id="dev.zed.Zed-Preview$"
-  open-on-workspace "2"
-}
-
-window-rule{
-    match app-id="^obsidian$"
-    open-maximized true
-    open-on-workspace "4"
-}
-
-window-rule {
   match app-id="com.github.th_ch.youtube_music$"
   match app-id="Spotify"
   open-maximized true
@@ -197,12 +186,12 @@ window-rule {
 window-rule {
   match app-id=r#"org.telegram.desktop.*"#
   open-maximized true
-  open-on-workspace "1"
+  open-on-workspace "3"
 }
 
 window-rule {
   match app-id="AmneziaVPN$"
-  open-on-workspace "1"
+  open-on-workspace "4"
 }
 
 
@@ -231,8 +220,7 @@ binds {
     Mod+Space { spawn "fuzzel";  }
     Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/autumn.jpg"; }
     Mod+B { spawn "firefox"; }
-    Mod+E { spawn "nautilus"; }
-    Mod+O { spawn "obsidian"; }
+    Mod+E { spawn "ghostty -e yazi"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -261,7 +249,6 @@ binds {
     Mod+Shift+Page_Up   { move-column-to-workspace-up; }
     Mod+Shift+U         { move-column-to-workspace-down; }
     Mod+Shift+I         { move-column-to-workspace-up; }
-
 
     // Mouse
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }

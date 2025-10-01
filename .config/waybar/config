@@ -1,50 +1,63 @@
-
 {
-    "position": "bottom", 
-    "height": 5,
-    "modules-left": ["niri/workspaces", "custom/media"],
-    "modules-center": ["niri/window", "clock"],
-    "modules-right": ["pulseaudio", "network", "bluetooth", "tray"],
-    "tray": {
-        "spacing": 10
+  "position": "bottom",
+  "height": 5,
+  "modules-left": [
+    "niri/workspaces",
+    "custom/media"
+  ],
+  "modules-center": [
+    "niri/window",
+    "clock"
+  ],
+  "modules-right": [
+    "custom/volume",
+    "network",
+    "bluetooth",
+    "tray"
+  ],
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%I:%M }",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "network": {
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "",
+    "format-disconnected": "Disconnected ",
+    "on-click": "ghostty -e impala"
+  },
+  "bluetooth": {
+    "on-click": "ghostty -e bluetui",
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": "󰂰",
+    "format-connected-battery": "󰂰",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "custom/volume": {
+    "exec": "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'",
+    "format": "{}% 🔊",
+    "interval": 8,
+    "on-click": "ghostty -e 'wpctl status'",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  },
+  "custom/media": {
+    "format": " {} {icon} ",
+    "format-icons": {
+      "spotify": "",
+      "default": "🎵"
     },
-    "clock": {
-        "format": "{:%I:%M }",
-        "format-alt": "{:%Y-%m-%d}"
-      
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "",
-        "format-disconnected": "Disconnected ",
-        "on-click": "networkmanager_dmenu"
-    },
-     "bluetooth": {
-        "on-click": "bzmenu -l custom --launcher-command \"fuzzel --config=$HOME/.config/fuzzel/fuzzel.ini -d -p '{prompt}'\"",
-	    "format": "",
-	    "format-disabled": "󰂲",
-	    "format-off": "󰂲",
-	    "format-connected": "󰂰",
-	    "format-connected-battery": "󰂰",
-	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-    },
-    "pulseaudio": {
-        "format": "{volume}%",
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": " {} {icon} ",
-        "format-icons": {
-            "spotify": "",
-            "default": "🎵"
-        },
-        "exec": "~/.config/waybar/scripts/playerinfo.sh",
-        "escape": true,
-        "return-type": "json",
-        "tooltip": true,
-        "on-click": "playerctl play-pause",
-    },
+    "exec": "~/.config/waybar/scripts/playerinfo.sh",
+    "escape": true,
+    "return-type": "json",
+    "tooltip": true,
+    "on-click": "playerctl play-pause"
+  }
 }
