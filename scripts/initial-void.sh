@@ -4,7 +4,7 @@ set -e
 # ========================
 # USER AND LOCALE SETTINGS
 # ========================
-USER_NAME="ashinkevich"  
+USER_NAME="drew"  
 LOCALE_DEFAULT="en_US.UTF-8"
 LOCALE_RU="ru_RU.UTF-8"
 TIMEZONE="Europe/Minsk"
@@ -19,17 +19,7 @@ echo "DHCP service: $([ -L /var/service/dhcpcd ] && echo 'enabled' || echo 'not 
 echo "User groups: $(groups ${USER_NAME:-$USER} 2>/dev/null || echo 'user not found')"
 
 echo "=== Installing base packages ==="
-sudo xbps-install -Sy \
-  glibc-locales \              # Required for locale generation
-  curl \                       # Required for downloading in apps.sh
-  jq \                         # JSON processor, required for Zig installation in apps.sh
-  tar \                        # Archive extraction, required for Zig installation
-  iwd \                        # Minimal Wi-Fi daemon, allows TUI control via iwctl
-  pipewire wireplumber libspa-bluetooth \  # Modern audio server + Bluetooth support
-  bluez \                      # Bluetooth daemon
-  dbus \                       # System D-Bus for IPC (required by PipeWire, Bluetooth)
-  wireguard-tools \             # CLI tools for WireGuard VPN
-  chrony                       # NTP client to sync system time
+sudo xbps-install -Sy curl jq tar iwd pipewire wireplumber libspa-bluetooth bluez dbus wireguard-tools chrony
 
 echo "=== Enabling services ==="
 # Enable essential services with runit
@@ -42,6 +32,8 @@ sudo ln -sf /etc/sv/iwd /var/service        # Wi-Fi daemon
 sudo ln -sf /etc/sv/bluetoothd /var/service # Bluetooth daemon
 sudo ln -sf /etc/sv/chronyd /var/service    # Time sync
 sudo ln -sf /etc/sv/fstrim /var/service     # Periodic SSD trim
+mkdir -p /etc/pipewire/pipewire.conf.d
+sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 
 echo "=== Adding user to groups ==="
 # Use current user if USER_NAME doesn't exist
@@ -53,27 +45,6 @@ else
   echo "Warning: User $target_user not found. Skipping group assignment."
 fi
 echo "Check sudo permissions: run 'sudo visudo' and ensure '%wheel ALL=(ALL) ALL' is uncommented"
-
-echo "=== Configuring locales ==="
-# Add Russian locale if missing (en_US.UTF-8 usually already available)
-if ! grep -q "^$LOCALE_RU" /etc/locale.gen 2>/dev/null; then
-  echo "$LOCALE_RU UTF-8" | sudo tee -a /etc/locale.gen
-  sudo locale-gen
-fi
-
-# Set default locale if not already set
-current_locale=$(grep '^LANG=' /etc/locale.conf 2>/dev/null | cut -d= -f2 || echo "")
-if [ "$current_locale" != "$LOCALE_DEFAULT" ]; then
-  echo "LANG=$LOCALE_DEFAULT" | sudo tee /etc/locale.conf
-fi
-
-echo "=== Setting timezone ==="
-# Set timezone if not already correct
-current_tz=$(readlink /etc/localtime | sed 's|/usr/share/zoneinfo/||')
-if [ "$current_tz" != "$TIMEZONE" ]; then
-  sudo ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-  sudo sv restart chronyd 2>/dev/null || true
-fi
 
 echo "=== Configuring PipeWire ==="
 # ALSA → PipeWire for audio compatibility

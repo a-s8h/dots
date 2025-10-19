@@ -21,7 +21,7 @@ input {
 
 }
 
-output "HDMI-A-3" {
+output "HDMI-A-1" {
     mode "3840x2160@60.000"
     scale 2
     transform "normal"
@@ -218,7 +218,7 @@ binds {
     Mod+Return { spawn "ghostty"; }
 
     Mod+Space { spawn "fuzzel";  }
-    Super+Ctrl+L { spawn "swaylock" "-i" "/home/yog/Pictures/autumn.jpg"; }
+    Super+Ctrl+L { spawn "swaylock" "-i" "/home/drew/Pictures/hauntii.jpeg"; }
     Mod+B { spawn "firefox"; }
     Mod+E { spawn "ghostty -e yazi"; }
 
@@ -304,9 +304,8 @@ binds {
     Mod+Shift+T { toggle-column-tabbed-display; }
     Mod+S       { toggle-window-floating; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+P { screenshot; }
+    Mod+Ctrl+P { screenshot-screen; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -323,7 +322,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/autumn.jpg" "-m" "fill"
+spawn-at-startup "swaybg" "-o" "HDMI-A-1" "-i" "/home/drew/Pictures/hauntii.jpeg" "-m" "fill"
 
 //xwayland-satellite {
 //    path "xwayland-satellite"
@@ -332,7 +331,8 @@ spawn-at-startup "swaybg" "-o" "HDMI-A-3" "-i" "/home/yog/Pictures/autumn.jpg" "
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "dunst"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -i /home/yog/Pictures/autumn.jpg"
+spawn-at-startup "pipewire"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -i /home/drew/Pictures/hauntii.jpeg"
 
 environment {
     DISPLAY ":0"

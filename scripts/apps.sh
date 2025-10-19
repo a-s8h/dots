@@ -3,17 +3,15 @@ set -euo pipefail
 
 ### ---------- Base utilities ----------
 sudo xbps-install -Sy \
-    git ripgrep fzf btop yazi
+    git ripgrep fzf btop yazi void-repo-nonfree xz
 
-### ---------- NVIDIA + Vulkan ----------
-read -p "Install NVIDIA drivers and Vulkan? (y/n) " CONT
+### ----------  Mesa + Vulkan ----------
+read -p "Install Mesa and Vulkan? (y/n) " CONT
 if [ "$CONT" = "y" ]; then
-    sudo xbps-install -Sy \
-        nvidia nvidia-dkms nvidia-libs \
-        mesa vulkan-loader vulkan-tools
-    echo "⚠️  NVIDIA drivers installed. REBOOT REQUIRED!"
+    sudo xbps-install -Sy mesa vulkan-loader Vulkan-Tools mesa-vulkan-nouveau
+    echo "⚠️ Mesa installed. REBOOT REQUIRED!"
 else
-    echo "NVIDIA drivers: skip"
+    echo "Mesa drivers: skip"
 fi
 
 ### ---------- Rust ----------
@@ -32,13 +30,12 @@ fi
 read -p "Install Niri + Waybar + Wayland tools? (y/n) " CONT
 if [ "$CONT" = "y" ]; then
     sudo xbps-install -Sy \
-        niri waybar fuzzel swaybg swaylock \
+        niri Waybar fuzzel swaybg swaylock \
         swayidle papirus-icon-theme wl-clipboard \
         playerctl dunst xwayland-satellite seatd
     cargo install impala
-    cargo install bluetui
-    sudo usermod -aG seat "$USER"
-    sudo ln -sf /etc/sv/seatd /var/service
+    sudo usermod -aG _seatd "$USER"
+    sudo ln -s /etc/sv/seatd /var/service/
     sudo sv restart seatd || true
     
     echo "✅ Niri Wayland environment installed"

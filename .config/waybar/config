@@ -29,7 +29,7 @@
     "on-click": "ghostty -e impala"
   },
   "bluetooth": {
-    "on-click": "ghostty -e bluetui",
+    "on-click": "ghostty -e bluetoothctl",
     "format": "",
     "format-disabled": "󰂲",
     "format-off": "󰂲",
@@ -42,18 +42,14 @@
   },
   "custom/volume": {
     "exec": "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'",
-    "format": "{}% 🔊",
+    "format": "{}%",
     "interval": 8,
     "on-click": "ghostty -e 'wpctl status'",
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
   },
   "custom/media": {
-    "format": " {} {icon} ",
-    "format-icons": {
-      "spotify": "",
-      "default": "🎵"
-    },
+    "format": " {} ",
     "exec": "~/.config/waybar/scripts/playerinfo.sh",
     "escape": true,
     "return-type": "json",

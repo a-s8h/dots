@@ -2,11 +2,11 @@
 
 set -eou pipefail
 
-read -p "Set gnome settings (y/n)?" CONT
+read -p "Run initial void linux script?" CONT
 if [ "$CONT" = "y" ]; then
-    bash ./scripts/gnome-settings.sh
+    bash ./scripts/initial-void.sh
 else
-    echo "Gnome settings: skip"
+    echo "Initial void linux: skip"
 fi
 
 read -p "Install apps (y/n)?" CONT
